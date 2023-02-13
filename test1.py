@@ -1,9 +1,5 @@
-word_list=['i','s','m','a','i','l']
-blank_list=['.','.','.','.','.']
-word="ismail"
-guess=input("enter")
-for i in range(len(word)):
-  if guess==word_list[i]:
-    blank_list[i].replace(guess)
-  else:
-    print("chance gaya eak")   
+dict=[{'name': 'ismail', 'bid': '34'}, {'name': 'yoyo', 'bid': '23'}, {'name': 'iss', 'bid': '98'}]
+for i in range(len(dict)):
+  for j in dict[i]:
+    print(j)
+print(dict[0,1])    
