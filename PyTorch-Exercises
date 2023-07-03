@@ -1,0 +1,485 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "gpuType": "T4",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "accelerator": "GPU"
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/masterismail/100-Projects-100-Days/blob/main/PyTorch-Exercises\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# 00. PyTorch Fundamentals Exercises\n",
+        "\n",
+        "### 1. Documentation reading\n",
+        "\n",
+        "A big part of deep learning (and learning to code in general) is getting familiar with the documentation of a certain framework you're using. We'll be using the PyTorch documentation a lot throughout the rest of this course. So I'd recommend spending 10-minutes reading the following (it's okay if you don't get some things for now, the focus is not yet full understanding, it's awareness):\n",
+        "  * The documentation on [`torch.Tensor`](https://pytorch.org/docs/stable/tensors.html#torch-tensor).\n",
+        "  * The documentation on [`torch.cuda`](https://pytorch.org/docs/master/notes/cuda.html#cuda-semantics).\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "AzDBM_v4iMe7"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# No code solution (reading)"
+      ],
+      "metadata": {
+        "id": "bGD0oD8Kizak"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2. Create a random tensor with shape `(7, 7)`.\n"
+      ],
+      "metadata": {
+        "id": "__iXqqz-ioUJ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Import torch\n",
+        "import torch\n",
+        "\n",
+        "# Create random tensor\n",
+        "tensor_A = torch.randn(7,7)\n",
+        "tensor_A"
+      ],
+      "metadata": {
+        "id": "6pUq9Dc8i2L7",
+        "outputId": "b63f93dc-eb16-4e2d-b04f-c132793a7b5d",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "tensor([[-0.7258,  0.9128, -0.0777, -0.1675,  0.6028, -0.2028, -0.1414],\n",
+              "        [-0.1798,  0.0221,  1.0334,  0.2372, -0.4501,  0.2075, -1.1136],\n",
+              "        [ 0.7970, -1.1101,  0.4701, -0.2264,  1.0582, -0.2551,  1.1755],\n",
+              "        [ 1.0596, -0.5207,  0.1153,  0.7969,  1.5061,  0.1259, -0.3498],\n",
+              "        [ 0.4246,  2.0335,  0.5004, -0.3390,  2.2639,  1.0055, -0.1257],\n",
+              "        [-1.2276, -1.9342,  0.1746, -0.1680,  0.3019, -1.4760, -0.1930],\n",
+              "        [ 0.6594,  2.4300,  0.2581,  1.2476, -0.5574, -1.3205,  2.2028]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 3. Perform a matrix multiplication on the tensor from 2 with another random tensor with shape `(1, 7)` (hint: you may have to transpose the second tensor)."
+      ],
+      "metadata": {
+        "id": "9-XxvRLfiqkR"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Create another random tensor\n",
+        "tensor_B = torch.randn(1,7)\n",
+        "tensor_B = tensor_B.transpose(1,0)\n",
+        "# Perform matrix multiplication\n",
+        "\n",
+        "torch.multi = tensor_A *tensor_B\n",
+        "torch.multi"
+      ],
+      "metadata": {
+        "id": "NcLqR0Sbi_vT",
+        "outputId": "cec2e1e6-a229-4dd2-c7e6-5764f1527ae0",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "tensor([[-0.4521,  0.5686, -0.0484, -0.1043,  0.3755, -0.1263, -0.0881],\n",
+              "        [ 0.2288, -0.0281, -1.3152, -0.3019,  0.5728, -0.2640,  1.4172],\n",
+              "        [-2.1449,  2.9876, -1.2651,  0.6093, -2.8480,  0.6867, -3.1637],\n",
+              "        [-0.0787,  0.0387, -0.0086, -0.0592, -0.1118, -0.0093,  0.0260],\n",
+              "        [ 0.6156,  2.9478,  0.7254, -0.4914,  3.2818,  1.4576, -0.1822],\n",
+              "        [ 1.2281,  1.9349, -0.1747,  0.1681, -0.3020,  1.4765,  0.1931],\n",
+              "        [ 0.3946,  1.4541,  0.1544,  0.7465, -0.3336, -0.7902,  1.3181]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 4. Set the random seed to `0` and do 2 & 3 over again.\n",
+        "\n",
+        "The output should be:\n",
+        "```\n",
+        "(tensor([[1.8542],\n",
+        "         [1.9611],\n",
+        "         [2.2884],\n",
+        "         [3.0481],\n",
+        "         [1.7067],\n",
+        "         [2.5290],\n",
+        "         [1.7989]]), torch.Size([7, 1]))\n",
+        "```"
+      ],
+      "metadata": {
+        "id": "eiutdKUFiryU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "seed = 1\n",
+        "torch.manual_seed(seed)\n",
+        "# Create two random tensors\n",
+        "a = torch.randn(7,1)\n",
+        "b = torch.randn(7,1)\n",
+        "# Matrix multiply tensors\n",
+        "mul = a*b\n",
+        "print(mul,mul.shape)\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uybNYytHUvVj",
+        "outputId": "1eb60642-9d5f-4e3d-a458-3201651547ec"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "tensor([[ 0.2524],\n",
+            "        [-0.2743],\n",
+            "        [-0.0347],\n",
+            "        [-0.5544],\n",
+            "        [ 0.0263],\n",
+            "        [ 0.0325],\n",
+            "        [ 1.4704]]) torch.Size([7, 1])\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 5. Speaking of random seeds, we saw how to set it with `torch.manual_seed()` but is there a GPU equivalent? (hint: you'll need to look into the documentation for `torch.cuda` for this one)\n",
+        "  * If there is, set the GPU random seed to `1234`."
+      ],
+      "metadata": {
+        "id": "ezY6ks9Cis37"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Set random seed on the GPU\n",
+        "seed = 30\n",
+        "torch.manual_seed(seed)\n",
+        "torch.cuda.manual_seed(seed)\n",
+        "\n",
+        "a = torch.randn(1,2)\n",
+        "a"
+      ],
+      "metadata": {
+        "id": "_LKWcfSTjp00",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "e81030c8-ff52-4d37-e462-77c5c6a804d5"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "tensor([[0.4705, 1.6563]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "### 6. Create two random tensors of shape `(2, 3)` and send them both to the GPU (you'll need access to a GPU for this). Set `torch.manual_seed(1234)` when creating the tensors (this doesn't have to be the GPU random seed). The output should be something like:\n",
+        "\n",
+        "```\n",
+        "Device: cuda\n",
+        "(tensor([[0.0290, 0.4019, 0.2598],\n",
+        "         [0.3666, 0.0583, 0.7006]], device='cuda:0'),\n",
+        " tensor([[0.0518, 0.4681, 0.6738],\n",
+        "         [0.3315, 0.7837, 0.5631]], device='cuda:0'))\n",
+        "```"
+      ],
+      "metadata": {
+        "id": "Ir9qSaj6it4n"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Set random seed\n",
+        "seed = 1234\n",
+        "torch.manual_seed(seed)\n",
+        "\n",
+        "\n",
+        "# Check for access to GPU\n",
+        "device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n",
+        "print(f\"device - {device}\")\n",
+        "\n",
+        "# Create two random tensors on GPU\n",
+        "a = torch.randn(2,3).to(device)\n",
+        "b = torch.randn(2,3).to(device)\n",
+        "print(a)\n",
+        "print(b)"
+      ],
+      "metadata": {
+        "id": "azXExiFZj5nm",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "e5b872c2-e031-4016-97d9-dcce39d460e1"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "device - cuda\n",
+            "tensor([[ 0.0461,  0.4024, -1.0115],\n",
+            "        [ 0.2167, -0.6123,  0.5036]], device='cuda:0')\n",
+            "tensor([[ 0.2310,  0.6931, -0.2669],\n",
+            "        [ 2.1785,  0.1021, -0.2590]], device='cuda:0')\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "### 7. Perform a matrix multiplication on the tensors you created in 6 (again, you may have to adjust the shapes of one of the tensors).\n",
+        "\n",
+        "The output should look like:\n",
+        "```\n",
+        "(tensor([[0.3647, 0.4709],\n",
+        "         [0.5184, 0.5617]], device='cuda:0'), torch.Size([2, 2]))\n",
+        "```"
+      ],
+      "metadata": {
+        "id": "5TlAxeiSiu1y"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Perform matmul on tensor_A and tensor_B\n",
+        "b_ = torch.transpose(a,0,1)\n",
+        "mul = torch.matmul(a,b_)\n",
+        "print(mul,mul.shape)\n"
+      ],
+      "metadata": {
+        "id": "fAeG7ox0lHEO",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "7650b165-62aa-47bf-d8f9-6723978ea796"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "tensor([[ 1.1872, -0.7458],\n",
+            "        [-0.7458,  0.6755]], device='cuda:0') torch.Size([2, 2])\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 8. Find the maximum and minimum values of the output of 7."
+      ],
+      "metadata": {
+        "id": "G7qfa5CSivwg"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Find max\n",
+        "max = torch.max(mul)\n",
+        "# Find min\n",
+        "min = torch.min(mul)\n",
+        "print(f\"max = {max}, min = {min}\")"
+      ],
+      "metadata": {
+        "id": "Fu8_3mZpllOd",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "8475579b-134d-4944-a1ce-992f7f6a4f77"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "max = 1.1872471570968628, min = -0.7457990646362305\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 9. Find the maximum and minimum index values of the output of 7."
+      ],
+      "metadata": {
+        "id": "wrTj5FgNiw47"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Find arg max\n",
+        "max = torch.argmax(mul)\n",
+        "\n",
+        "# Find arg min\n",
+        "min = torch.argmin(mul)\n",
+        "print(f\"max = {max}, min = {min}\")\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "CCEKt4K2lsfQ",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "d44c462b-1c62-4d3d-e90f-963e03b19083"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "max = 0, min = 1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "### 10. Make a random tensor with shape `(1, 1, 1, 10)` and then create a new tensor with all the `1` dimensions removed to be left with a tensor of shape `(10)`. Set the seed to `7` when you create it and print out the first tensor and it's shape as well as the second tensor and it's shape.\n",
+        "\n",
+        "The output should look like:\n",
+        "\n",
+        "```\n",
+        "tensor([[[[0.5349, 0.1988, 0.6592, 0.6569, 0.2328, 0.4251, 0.2071, 0.6297,\n",
+        "           0.3653, 0.8513]]]]) torch.Size([1, 1, 1, 10])\n",
+        "tensor([0.5349, 0.1988, 0.6592, 0.6569, 0.2328, 0.4251, 0.2071, 0.6297, 0.3653,\n",
+        "        0.8513]) torch.Size([10])\n",
+        "```"
+      ],
+      "metadata": {
+        "id": "hmeybz4uixy7"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Set seed\n",
+        "seed = 1\n",
+        "torch.manual_seed(seed)\n",
+        "\n",
+        "\n",
+        "# Create random tensor\n",
+        "a = torch.randn(1,1,1,10)\n",
+        "\n",
+        "\n",
+        "# Remove single dimensions\n",
+        "a_new = torch.randn(10)\n",
+        "\n",
+        "\n",
+        "# Print out tensors and their shapes\n",
+        "print(a,a.shape)\n",
+        "print(a_new, a_new.shape)\n"
+      ],
+      "metadata": {
+        "id": "TQ9zbRzVl1jV",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "ffc723e1-d098-49c0-baa7-26f08fb94e3d"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "tensor([[[[ 0.6614,  0.2669,  0.0617,  0.6213, -0.4519, -0.1661, -1.5228,\n",
+            "            0.3817, -1.0276, -0.5631]]]]) torch.Size([1, 1, 1, 10])\n",
+            "tensor([-0.8923, -0.0583, -0.1955, -0.9656,  0.4224,  0.2673, -0.4212, -0.5107,\n",
+            "        -1.5727, -0.1232]) torch.Size([10])\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
