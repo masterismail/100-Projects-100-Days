@@ -1,5 +1,6 @@
-dict=[{'name': 'ismail', 'bid': '34'}, {'name': 'yoyo', 'bid': '23'}, {'name': 'iss', 'bid': '98'}]
-for i in range(len(dict)):
-  for j in dict[i]:
-    print(j)
-print(dict[0,1])    
+def print_it():
+    print("hi")
+
+check = {"coffee": 1, "milk": 1, "water": 1}
+for key, value in check:
+  print(f"{key}{value} is not available")
