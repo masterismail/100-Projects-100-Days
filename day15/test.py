@@ -107,15 +107,7 @@ def make_coffee():
     resources['coffee']=resources['coffee']-MENU['cappuccino']['ingredients']['coffee']
     resources['milk']=resources['milk']-MENU['cappuccino']['ingredients']['milk']
     print("your cappuccino is ready")  
-
-
-                        
-
-
-
- 
 display_prompt()
-
 user_input = input("")
 if user_input == "off":
   print("end execution")
