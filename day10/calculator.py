@@ -26,7 +26,7 @@ while opt == "y":
     operation = input("enter the operation that you want to perform \n")
     newnum = int(input("enter a number"))
     op_function = operations[operation]
-    answer = op_function(answer,newnum)
-    print(answer)
+    answer1 = op_function(answer,newnum)
+    print(answer1)
     opt = (input("do you want to continue? Y/N"))
 
