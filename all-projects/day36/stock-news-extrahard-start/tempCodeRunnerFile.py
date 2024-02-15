@@ -1,0 +1,5 @@
+print(now.hour)
+# print(now.day)
+# print(now.month)
+# print(now.year)
+# print(now.minute)

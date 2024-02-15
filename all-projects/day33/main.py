@@ -1,10 +1,12 @@
 import requests
+import datetime as dt
 
-response = requests.get(url="https://api.kanye.rest")
-response.raise_for_status()
+now = dt.datetime.now()
 
-data = response.json()
-print(data)
+time = str(now)
 
 
- 
+
+print(type(time))
+print(time) 
+print(time.split(' '))
