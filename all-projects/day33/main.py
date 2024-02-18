@@ -1,12 +1,4 @@
-import requests
-import datetime as dt
+import secrets
 
-now = dt.datetime.now()
-
-time = str(now)
-
-
-
-print(type(time))
-print(time) 
-print(time.split(' '))
+random_token = secrets.token_hex(16)
+print(random_token)

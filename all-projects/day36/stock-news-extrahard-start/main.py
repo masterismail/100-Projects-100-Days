@@ -57,7 +57,7 @@ print(f"stock difference : {(yesterday_stock)} ")
 
 news_params  = {
     "q":"tesla",
-    "apikey":"605bf9d9bae04a52a95a96ae0508e47e",
+    
     "from":yesterday_date,
     "to":today_date
 }
@@ -71,8 +71,6 @@ top_3 = news_response.json()["articles"][:2]
 # Send a seperate message with the percentage change and each article's title and description to your phone number. 
 
 
-# account_sid = 'AC3d0d251daa480d5d088da4c08a7bac56'
-# auth_token = '52ba17d39b4bc6e13cd69a01cdde7137'
 # client = Client(account_sid, auth_token)
 
 # message = client.messages.create(
